@@ -1,7 +1,6 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Mountain, Search, Menu, X } from "lucide-react";
+import { Search, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 
@@ -114,14 +113,18 @@ const Navigation = ({ activeSection }: NavigationProps) => {
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
-                className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center"
+                className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden"
               >
-                <Mountain className="h-6 w-6 text-white" />
+                <img 
+                  src="/assets/logo.png" 
+                  alt="The Himachal Escape Logo" 
+                  className="w-full h-full object-contain"
+                />
               </motion.div>
               <span className={`text-xl font-bold transition-colors duration-300 ${
                 isScrolled ? "text-slate-800" : "text-white"
               }`}>
-                Himachal Pradesh
+                The Himachal Escape
               </span>
             </motion.div>
 
