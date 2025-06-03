@@ -328,6 +328,7 @@ const Index = () => {
               >
                 <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                   Himachal Pradesh
+                 
                 </h3>
                 <p className="text-slate-300 leading-relaxed">
                   Discover the enchanting beauty of India's mountain paradise. 
@@ -379,7 +380,7 @@ const Index = () => {
               viewport={{ once: true }}
               className="border-t border-slate-700 mt-12 pt-8 text-center text-slate-400"
             >
-              <p>&copy; 2024 Himachal Pradesh Tourism. All rights reserved.</p>
+              <p>&copy; 2025 The Himachal Escape. All rights reserved.</p>
             </motion.div>
           </div>
         </motion.footer>

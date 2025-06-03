@@ -31,8 +31,44 @@ const Hero = () => {
       image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
       title: "Mystical Landscapes",
       subtitle: "Adventure Beyond Imagination"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+      title: "Serene Lakes",
+      subtitle: "Calmness in Every Ripple"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+      title: "Golden Deserts",
+      subtitle: "The Beauty of Barren Lands"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff",
+      title: "Tropical Beaches",
+      subtitle: "Where Sunshine Meets the Sea"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+      title: "Rolling Dunes",
+      subtitle: "Winds of Change and Wonder"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1508923567004-3a6b8004f3d3",
+      title: "Snowy Forests",
+      subtitle: "Whispers of Winter"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e",
+      title: "Foggy Hills",
+      subtitle: "Embrace the Mystery"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1470770840407-988d0b5f8f24",
+      title: "Blossoming Meadows",
+      subtitle: "Life in Full Bloom"
     }
   ];
+  
 
   useEffect(() => {
     // GSAP animations on mount
@@ -251,7 +287,7 @@ const Hero = () => {
               { number: "12", label: "Districts" },
               { number: "300+", label: "Destinations" },
               { number: "50+", label: "Adventures" },
-              { number: "5M+", label: "Visitors" }
+              { number: "20M+", label: "Visitors every year" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
