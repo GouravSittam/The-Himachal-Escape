@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
-import { Mountain } from "lucide-react";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -53,10 +52,14 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           }}
           className="relative mb-8"
         >
-          <div className="w-24 h-24 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center animate-pulse-glow">
-            <Mountain className="h-12 w-12 text-white" />
+          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center animate-pulse-glow overflow-hidden">
+            <img 
+              src="/assets/logo.png" 
+              alt="The Himachal Escape Logo" 
+              className="w-full h-full object-contain p-4"
+            />
           </div>
-          <div className="absolute inset-0 w-24 h-24 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl opacity-20 animate-ping" />
+          <div className="absolute inset-0 w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl opacity-20 animate-ping" />
         </motion.div>
 
         <motion.h1
@@ -65,7 +68,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           transition={{ delay: 0.8, duration: 1 }}
           className="text-4xl md:text-5xl font-bold text-white mb-4"
         >
-          Himachal Pradesh
+          The Himachal Escape
         </motion.h1>
 
         <motion.p
