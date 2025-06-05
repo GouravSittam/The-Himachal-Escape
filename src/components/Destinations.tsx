@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -152,27 +151,27 @@ const Destinations = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6"
     >
       {destinations.map((destination, index) => (
         <motion.div
           key={destination.id}
           variants={cardVariants}
           whileHover={{ 
-            y: -20,
+            y: -10,
             scale: 1.02,
             transition: { type: "spring", stiffness: 300 }
           }}
           whileTap={{ scale: 0.98 }}
         >
-          <Card className="group hover:shadow-2xl transition-all duration-500 border-0 overflow-hidden bg-white cursor-pointer">
+          <Card className="group hover:shadow-xl transition-all duration-500 border-0 overflow-hidden bg-white cursor-pointer">
             <motion.div 
               className="relative overflow-hidden"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.6 }}
             >
               <motion.div
-                className="h-64 bg-cover bg-center transition-transform duration-700"
+                className="h-48 sm:h-56 md:h-64 bg-cover bg-center transition-transform duration-700"
                 style={{ backgroundImage: `url(${destination.image})` }}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.8 }}
@@ -183,9 +182,9 @@ const Destinations = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="absolute top-4 left-4"
+                className="absolute top-3 sm:top-4 left-3 sm:left-4"
               >
-                <Badge className={`${getCategoryColor(destination.category)} border-0`}>
+                <Badge className={`${getCategoryColor(destination.category)} border-0 text-xs sm:text-sm`}>
                   {destination.category}
                 </Badge>
               </motion.div>
@@ -194,29 +193,29 @@ const Destinations = () => {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1 + 0.2, type: "spring" }}
-                className="absolute top-4 right-4 flex items-center space-x-1 bg-black/30 backdrop-blur-sm rounded-full px-2 py-1"
+                className="absolute top-3 sm:top-4 right-3 sm:right-4 flex items-center space-x-1 bg-black/30 backdrop-blur-sm rounded-full px-2 py-1"
               >
-                <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                <span className="text-white text-sm font-semibold">{destination.rating}</span>
+                <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
+                <span className="text-white text-xs sm:text-sm font-semibold">{destination.rating}</span>
               </motion.div>
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
-                className="absolute bottom-4 left-4 right-4"
+                className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4"
               >
-                <h3 className="text-2xl font-bold text-white mb-1">{destination.name}</h3>
-                <p className="text-white/90 text-sm">Best time: {destination.bestTime}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">{destination.name}</h3>
+                <p className="text-white/90 text-xs sm:text-sm">Best time: {destination.bestTime}</p>
               </motion.div>
             </motion.div>
 
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: index * 0.1 + 0.4 }}
-                className="text-slate-600 mb-4 leading-relaxed"
+                className="text-slate-600 text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed"
               >
                 {destination.description}
               </motion.p>
@@ -225,13 +224,13 @@ const Destinations = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.5 }}
-                className="mb-4"
+                className="mb-3 sm:mb-4"
               >
-                <h4 className="font-semibold text-slate-800 mb-2 flex items-center">
-                  <Compass className="h-4 w-4 mr-2 text-blue-500" />
+                <h4 className="font-semibold text-slate-800 text-sm sm:text-base mb-2 flex items-center">
+                  <Compass className="h-3 w-3 sm:h-4 sm:w-4 mr-2 text-blue-500" />
                   Highlights
                 </h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1 sm:gap-2">
                   {destination.highlights.map((highlight, highlightIndex) => (
                     <motion.div
                       key={highlightIndex}

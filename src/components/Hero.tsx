@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Mountain, Compass, Star } from "lucide-react";
@@ -177,13 +176,13 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-center text-white max-w-5xl mx-auto px-4"
+          className="text-center text-white max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           {/* Main Title */}
-          <div ref={titleRef} className="mb-8">
+          <div ref={titleRef} className="mb-6 sm:mb-8">
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight"
             >
               <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
                 Himachal
@@ -193,21 +192,21 @@ const Hero = () => {
             </motion.h1>
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: 128 }}
+              animate={{ width: "100px", maxWidth: "128px" }}
               transition={{ duration: 1, delay: 1 }}
-              className="h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-8 rounded-full"
+              className="h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6 sm:mb-8 rounded-full"
             />
           </div>
 
           {/* Dynamic Subtitle */}
-          <div ref={subtitleRef} className="mb-12 h-20 flex items-center justify-center">
+          <div ref={subtitleRef} className="mb-8 sm:mb-12 h-16 sm:h-20 flex items-center justify-center">
             <motion.p
               key={currentSlide}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.8 }}
-              className="text-2xl md:text-3xl font-light opacity-90"
+              className="text-xl sm:text-2xl md:text-3xl font-light opacity-90 px-4"
             >
               {heroSlides[currentSlide].subtitle}
             </motion.p>
@@ -217,7 +216,7 @@ const Hero = () => {
           <motion.div
             ref={featuresRef}
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-4xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12 max-w-4xl mx-auto"
           >
             {[
               { icon: Mountain, title: "Himalayan Peaks", desc: "Experience the world's most majestic mountain ranges" },
@@ -232,17 +231,17 @@ const Hero = () => {
                   y: -10,
                   transition: { type: "spring", stiffness: 300 }
                 }}
-                className="text-center group cursor-pointer"
+                className="text-center group cursor-pointer p-4 sm:p-6"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className="w-16 h-16 mx-auto mb-4 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300"
+                  className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300"
                 >
-                  <feature.icon className="h-8 w-8 text-white" />
+                  <feature.icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
                 </motion.div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-white/80">{feature.desc}</p>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-white/80 text-sm sm:text-base">{feature.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -250,31 +249,21 @@ const Hero = () => {
           {/* Call to Action */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-6 text-lg"
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 px-8 py-4 text-lg font-semibold rounded-full shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
-              >
-                Explore Destinations
-              </Button>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              Start Your Journey
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto border-white/20 hover:bg-white/10 text-white px-8 py-6 text-lg"
             >
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300"
-              >
-                Watch Video
-              </Button>
-            </motion.div>
+              Learn More
+            </Button>
           </motion.div>
 
           {/* Stats */}

@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -141,11 +140,11 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-20"
             >
-              <h2 className="text-5xl md:text-6xl font-bold text-slate-800 mb-8 leading-tight">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-800 mb-4 sm:mb-8 leading-tight">
                 Discover{" "}
                 <span className="text-gradient-blue">Himachal Pradesh</span>
               </h2>
-              <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium">
+              <p className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-medium px-4 sm:px-0">
                 From the snow-capped peaks of the Himalayas to serene valleys dotted with ancient temples, 
                 experience the magic of India's mountain paradise.
               </p>
@@ -171,11 +170,11 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-20"
             >
-              <h2 className="text-5xl md:text-6xl font-bold text-slate-800 mb-8">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-800 mb-4 sm:mb-8">
                 Adventures{" "}
                 <span className="text-gradient">Await</span>
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto font-medium">
+              <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto font-medium px-4 sm:px-0">
                 Embark on thrilling adventures amidst breathtaking landscapes
               </p>
             </motion.div>
@@ -200,11 +199,11 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-20"
             >
-              <h2 className="text-5xl md:text-6xl font-bold text-slate-800 mb-8">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-800 mb-4 sm:mb-8">
                 Rich Heritage &{" "}
                 <span className="text-gradient-blue">Culture</span>
               </h2>
-              <p className="text-xl text-slate-600 max-w-4xl mx-auto font-medium">
+              <p className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto font-medium px-4 sm:px-0">
                 Immerse yourself in centuries-old traditions, vibrant festivals, and authentic Himachali cuisine
               </p>
             </motion.div>
@@ -223,7 +222,7 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 sm:mb-6">
                 Plan Your <span className="text-gradient">Journey</span>
               </h2>
             </motion.div>
@@ -234,7 +233,7 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 max-w-7xl mx-auto px-4 sm:px-6"
             >
               {[
                 {

@@ -119,18 +119,18 @@ const Navigation = ({ activeSection }: NavigationProps) => {
           isDarkMode ? "text-white" : "text-slate-800"
         }`}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <motion.div
               ref={logoRef}
-              className="flex items-center space-x-3"
+              className="flex items-center space-x-2 sm:space-x-3"
               whileHover={{ scale: 1.05 }}
             >
               <motion.div
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
-                className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600"
               >
                 <img 
                   src="/assets/logo.png" 
@@ -138,7 +138,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                   className="w-full h-full object-contain"
                 />
               </motion.div>
-              <span className={`text-xl font-bold transition-colors duration-300 ${
+              <span className={`text-lg sm:text-xl font-bold transition-colors duration-300 ${
                 isScrolled 
                   ? isDarkMode 
                     ? "text-white" 
@@ -149,12 +149,26 @@ const Navigation = ({ activeSection }: NavigationProps) => {
               </span>
             </motion.div>
 
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors duration-300"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </motion.button>
+
             {/* Desktop Navigation */}
             <motion.div
               variants={menuVariants}
               initial="hidden"
               animate="visible"
-              className="hidden md:flex items-center space-x-8"
+              className="hidden md:flex items-center space-x-6 lg:space-x-8"
             >
               {navItems.map((item) => (
                 <motion.button
@@ -255,49 +269,6 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                 </Button>
               </motion.div>
             </motion.div>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              className="md:hidden p-2"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              whileTap={{ scale: 0.9 }}
-            >
-              <AnimatePresence mode="wait">
-                {isMobileMenuOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className={`w-6 h-6 ${
-                      isScrolled 
-                        ? isDarkMode 
-                          ? "text-white" 
-                          : "text-slate-800"
-                        : "text-white"
-                    }`} />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className={`w-6 h-6 ${
-                      isScrolled 
-                        ? isDarkMode 
-                          ? "text-white" 
-                          : "text-slate-800"
-                        : "text-white"
-                    }`} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
           </div>
         </div>
       </motion.nav>
@@ -305,72 +276,64 @@ const Navigation = ({ activeSection }: NavigationProps) => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/50 md:hidden"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className={`fixed top-20 left-4 right-4 z-50 rounded-2xl shadow-2xl md:hidden overflow-hidden ${
-                isDarkMode ? "bg-gray-900" : "bg-white"
-              }`}
-            >
-              <motion.div
-                variants={menuVariants}
-                initial="hidden"
-                animate="visible"
-                className="py-4"
-              >
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-lg md:hidden"
+          >
+            <div className="container mx-auto px-4 py-4">
+              <div className="flex flex-col space-y-4">
                 {navItems.map((item) => (
                   <motion.button
                     key={item.id}
-                    variants={itemVariants}
                     onClick={() => scrollToSection(item.id)}
-                    whileHover={{ x: 10, backgroundColor: isDarkMode ? "rgba(59, 130, 246, 0.1)" : "rgba(59, 130, 246, 0.05)" }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`block w-full px-6 py-4 text-left font-medium transition-colors ${
+                    className={`text-left px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
                       activeSection === item.id
                         ? isDarkMode
-                          ? "text-blue-400 bg-blue-400/10"
-                          : "text-blue-600 bg-blue-50"
+                          ? "bg-blue-400/10 text-blue-400"
+                          : "bg-blue-50 text-blue-600"
                         : isDarkMode
-                        ? "text-gray-300 hover:text-blue-400"
-                        : "text-slate-700 hover:text-blue-600"
+                        ? "text-gray-300 hover:bg-blue-400/10 hover:text-blue-400"
+                        : "text-slate-600 hover:bg-blue-50 hover:text-blue-600"
                     }`}
                   >
                     {item.label}
                   </motion.button>
                 ))}
-                <motion.div variants={itemVariants} className="px-6 py-4 border-t border-gray-200 dark:border-gray-800">
-                  <div className="flex items-center justify-between mb-4">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setIsDarkMode(!isDarkMode)}
-                      className={isDarkMode ? "text-gray-300 hover:text-blue-400" : "text-slate-600 hover:text-blue-600"}
-                    >
-                      {isDarkMode ? (
-                        <Sun className="h-4 w-4 mr-2" />
-                      ) : (
-                        <Moon className="h-4 w-4 mr-2" />
-                      )}
-                      {isDarkMode ? "Light Mode" : "Dark Mode"}
-                    </Button>
-                  </div>
-                  <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-                    Plan Your Trip
+                <div className="flex items-center space-x-4 px-4 py-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={`transition-colors duration-300 ${
+                      isDarkMode
+                        ? "text-gray-300 hover:text-blue-400 hover:bg-blue-400/10"
+                        : "text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+                    }`}
+                  >
+                    <Search className="h-4 w-4" />
                   </Button>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsDarkMode(!isDarkMode)}
+                    className={`transition-colors duration-300 ${
+                      isDarkMode
+                        ? "text-gray-300 hover:text-blue-400 hover:bg-blue-400/10"
+                        : "text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+                    }`}
+                  >
+                    {isDarkMode ? (
+                      <Sun className="h-4 w-4" />
+                    ) : (
+                      <Moon className="h-4 w-4" />
+                    )}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
