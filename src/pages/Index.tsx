@@ -319,34 +319,65 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, staggerChildren: 0.1 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-4 gap-8"
+              className="grid grid-cols-1 md:grid-cols-4 gap-12"
             >
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="transition-transform duration-300"
               >
-                <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                   Himachal Pradesh
-                 
                 </h3>
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-slate-300 leading-relaxed mb-6">
                   Discover the enchanting beauty of India's mountain paradise. 
                   Experience adventure, culture, and tranquility like never before.
                 </p>
+                <div className="flex space-x-4">
+                  {[
+                    { icon: "facebook", color: "hover:text-blue-400" },
+                    { icon: "instagram", color: "hover:text-pink-400" },
+                    { icon: "twitter", color: "hover:text-sky-400" },
+                    { icon: "youtube", color: "hover:text-red-400" }
+                  ].map((social, index) => (
+                    <motion.a
+                      key={index}
+                      href="#"
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      className={`text-slate-400 ${social.color} transition-colors duration-300`}
+                    >
+                      <i className={`fab fa-${social.icon} text-xl`}></i>
+                    </motion.a>
+                  ))}
+                </div>
               </motion.div>
               
               {[
                 {
-                  title: "Destinations",
-                  items: ["Manali", "Shimla", "Dharamshala", "Spiti Valley"]
+                  title: "Popular Destinations",
+                  items: [
+                    { name: "Manali", description: "Adventure Capital" },
+                    { name: "Shimla", description: "Queen of Hills" },
+                    { name: "Dharamshala", description: "Little Lhasa" },
+                    { name: "Spiti Valley", description: "Cold Desert" }
+                  ]
                 },
                 {
-                  title: "Activities",
-                  items: ["Trekking", "Paragliding", "Skiing", "River Rafting"]
+                  title: "Adventure Activities",
+                  items: [
+                    { name: "Trekking", description: "Himalayan Trails" },
+                    { name: "Paragliding", description: "Sky Adventures" },
+                    { name: "Skiing", description: "Winter Sports" },
+                    { name: "River Rafting", description: "Water Thrills" }
+                  ]
                 },
                 {
-                  title: "Contact",
-                  items: ["info@himachaltourism.com", "+91 177 262 5320", "Tourism Office, Shimla"]
+                  title: "Contact Us",
+                  items: [
+                    { name: "Email", description: "info@himachaltourism.com" },
+                    { name: "Phone", description: "+91 177 262 5320" },
+                    { name: "Address", description: "Tourism Office, Shimla" },
+                    { name: "Hours", description: "Mon-Sat: 9AM-6PM" }
+                  ]
                 }
               ].map((section, index) => (
                 <motion.div
@@ -356,15 +387,24 @@ const Index = () => {
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <h4 className="text-lg font-semibold mb-4">{section.title}</h4>
-                  <ul className="space-y-2 text-slate-300">
+                  <h4 className="text-xl font-semibold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    {section.title}
+                  </h4>
+                  <ul className="space-y-4">
                     {section.items.map((item, itemIndex) => (
                       <motion.li
                         key={itemIndex}
                         whileHover={{ x: 5, color: "#60a5fa" }}
-                        className="transition-all duration-200 cursor-pointer"
+                        className="transition-all duration-200 cursor-pointer group"
                       >
-                        {item}
+                        <div className="flex flex-col">
+                          <span className="text-slate-300 group-hover:text-blue-400 transition-colors duration-300">
+                            {item.name}
+                          </span>
+                          <span className="text-sm text-slate-400 group-hover:text-blue-300 transition-colors duration-300">
+                            {item.description}
+                          </span>
+                        </div>
                       </motion.li>
                     ))}
                   </ul>
@@ -377,9 +417,34 @@ const Index = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
               viewport={{ once: true }}
-              className="border-t border-slate-700 mt-12 pt-8 text-center text-slate-400"
+              className="border-t border-slate-700 mt-16 pt-8"
             >
-              <p>&copy; 2025 The Himachal Escape. All rights reserved.</p>
+              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <p className="text-slate-400">&copy; 2025 The Himachal Escape. All rights reserved.</p>
+                <div className="flex space-x-6">
+                  <motion.a
+                    href="#"
+                    whileHover={{ scale: 1.1 }}
+                    className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
+                  >
+                    Privacy Policy
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    whileHover={{ scale: 1.1 }}
+                    className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
+                  >
+                    Terms of Service
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    whileHover={{ scale: 1.1 }}
+                    className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
+                  >
+                    Cookie Policy
+                  </motion.a>
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.footer>
