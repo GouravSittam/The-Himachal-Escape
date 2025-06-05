@@ -33,6 +33,7 @@ const Destinations = () => {
       bestTime: "Mar - Jun",
       rating: 4.6
     },
+    
     {
       id: 3,
       name: "Dharamshala",

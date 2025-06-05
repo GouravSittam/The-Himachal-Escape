@@ -62,7 +62,7 @@ const Hero = () => {
       subtitle: "Embrace the Mystery"
     },
     {
-      image: "https://images.unsplash.com/photo-1470770840407-988d0b5f8f24",
+      image: "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=800&q=80",
       title: "Blossoming Meadows",
       subtitle: "Life in Full Bloom"
     }
@@ -149,7 +149,7 @@ const Hero = () => {
   };
 
   return (
-    <div ref={heroRef} className="relative min-h-screen overflow-hidden">
+    <div ref={heroRef} className="relative min-h-screen overflow-hidden pt-16 sm:pt-20">
       {/* Background Slides with enhanced transitions */}
       {heroSlides.map((slide, index) => (
         <motion.div
@@ -182,7 +182,7 @@ const Hero = () => {
           <div ref={titleRef} className="mb-6 sm:mb-8">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight"
+              className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-2 xs:mb-4 sm:mb-6 leading-tight break-words"
             >
               <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
                 Himachal
