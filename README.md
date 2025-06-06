@@ -1,4 +1,3 @@
-
 <div align="center">
   <img src="https://avatars.githubusercontent.com/u/118460171?v=4" width="120" style="border-radius:50%;" alt="Logo"/>
   <h1>The Himachal Escape</h1>
