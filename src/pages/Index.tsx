@@ -10,6 +10,7 @@ import Destinations from "@/components/Destinations";
 import Activities from "@/components/Activities";
 import Culture from "@/components/Culture";
 import Navigation from "@/components/Navigation";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -116,6 +117,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen w-full bg-white relative">
+      <SmoothCursor />
       {/* Purple Gradient Grid Right Background */}
       <div
         className="absolute inset-0 z-0"

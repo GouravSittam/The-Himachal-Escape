@@ -1,33 +1,33 @@
+"use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { motion, MotionProps, useScroll } from "framer-motion";
+import React from "react";
 
-const ScrollProgress = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+interface ScrollProgressProps
+  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {}
 
-  useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollPx = document.documentElement.scrollTop;
-      const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = scrollPx / winHeightPx;
-      setScrollProgress(scrolled);
-    };
-
-    window.addEventListener("scroll", updateScrollProgress);
-    return () => window.removeEventListener("scroll", updateScrollProgress);
-  }, []);
+export const ScrollProgress = React.forwardRef<
+  HTMLDivElement,
+  ScrollProgressProps
+>(({ className, ...props }, ref) => {
+  const { scrollYProgress } = useScroll();
 
   return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-50 origin-left"
-        style={{ scaleX: scrollProgress }}
-        initial={{ scaleX: 0 }}
-        transition={{ duration: 0.1 }}
-      />
-      <div className="fixed top-0 left-0 right-0 h-1 bg-black/10 z-40" />
-    </>
+    <motion.div
+      ref={ref}
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 h-1 origin-left bg-gradient-to-r from-[#A97CF8] via-[#F38CB8] to-[#FDCC92]",
+        className,
+      )}
+      style={{
+        scaleX: scrollYProgress,
+      }}
+      {...props}
+    />
   );
-};
+});
+
+ScrollProgress.displayName = "ScrollProgress";
 
 export default ScrollProgress;
