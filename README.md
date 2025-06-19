@@ -9,6 +9,7 @@
 
 ---
 
+
 ## 🌄 About The Project
 
 **The Himachal Escape** is a modern web application designed to be your personal travel companion for exploring the wonders of Himachal Pradesh, India.
